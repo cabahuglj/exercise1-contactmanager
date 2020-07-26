@@ -1,0 +1,31 @@
+<alert></alert>
+<h2>Contacts List</h2>
+<div *ngIf="contacts.length < 1">
+  <span>
+    No Contacts Registered.
+  </span>
+</div>
+<div>
+  <button mat-button class=".contactControl" id="createContacts" name="Add New" (click)="showAddContact()">
+    <span class=".buttonIcon"><fa-icon [icon]="contactAddIcon"></fa-icon></span>
+    <span>Add New..</span>
+  </button>
+</div>
+<ul *ngIf="contacts.length > 0" class="contacts">
+  <li *ngFor="let contact of contacts"
+  [class.selected]="contact === selectedContact"
+    (click)="onSelect(contact)">
+    <span class="badge"><fa-icon [icon]="contactBullet"></fa-icon></span>
+    {{ contact.identification.lastName }}, {{ contact.identification.firstName }}
+  </li>
+</ul>
+<div *ngIf="contacts.length > 0">
+  <button mat-button class=".contactControl" id="deleteAllContacts" name="Delete All" (click)="openDialog()">
+    <span class=".buttonIcon"><fa-icon [icon]="contactDelIcon"></fa-icon></span>
+    <span>Delete All</span>
+  </button>
+</div>
+<app-contact-detail [contact]="selectedContact"></app-contact-detail>
+<app-address-detail [contact]="selectedContact"></app-address-detail>
+<app-comm-detail [contact]="selectedContact"></app-comm-detail>
+<app-add-contact [isAddingContact]="isAddingContact"></app-add-contact>

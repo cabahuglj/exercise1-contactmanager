@@ -1,0 +1,73 @@
+<div *ngIf="contact">
+  <span *ngIf="contact.addresses.length > 0">
+    ADDRESSES:
+  </span>
+  <div>
+    <button mat-button id="addAddr"><fa-icon [icon]="addAddrIcon"></fa-icon>Add Address</button>
+  </div>
+  <div *ngFor="let address of contact.addresses">
+    <div *ngIf="address.addrType === typeHome" class="addrTypeHome">
+      <span>HOME</span>
+      <div *ngIf="address.number">
+        <span>Number: </span>
+        {{ address.number }}
+      </div>
+      <div *ngIf="address.street">
+        <span>Street: </span>
+        {{ address.street }}
+      </div>
+      <div *ngIf="address.unit">
+        <span>Unit: </span>
+        {{ address.unit }}
+      </div>
+      <div>
+        <span>City: </span>
+        {{ address.city }}
+      </div>
+      <div>
+        <span>State: </span>
+        {{ address.state }}
+      </div>
+      <div>
+        <span>Zip Code: </span>
+        {{ address.zipCode }}
+      </div>
+    </div>
+    <div *ngIf="address.addrType === typeWork" class="addrTypeWork">
+      <span>WORK</span>
+      <div *ngIf="address.number">
+        <span>Number: </span>
+        {{ address.number }}
+      </div>
+      <div *ngIf="address.street">
+        <span>Street: </span>
+        {{ address.street }}
+      </div>
+      <div *ngIf="address.unit">
+        <span>Unit: </span>
+        {{ address.unit }}
+      </div>
+      <div>
+        <span>City: </span>
+        {{ address.city }}
+      </div>
+      <div>
+        <span>State: </span>
+        {{ address.state }}
+      </div>
+      <div>
+        <span>Zip Code: </span>
+        {{ address.zipCode }}
+      </div>
+    </div>
+  </div>
+  <span *ngIf="contact.addresses.length < 1">
+    No Address registered.
+  </span>
+  <div *ngIf="contact.addresses.length > 0">
+    <button mat-button id="deleteAllAddr" (click)="openDialog()">
+      <fa-icon [icon]="delAddrIcon"></fa-icon>
+      Delete All Addresses
+    </button>
+  </div>
+</div>

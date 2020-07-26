@@ -1,0 +1,35 @@
+<div *ngIf="contact">
+  <span *ngIf="contact.communications.length > 0">
+    CONTACT INFORMATION:
+  </span>
+  <div>
+    <button mat-button id="addComm"><fa-icon [icon]="addCommIcon"></fa-icon>Add Contact Information</button>
+  </div>
+  <div *ngFor="let communication of contact.communications">
+    <div *ngIf="communication.commType === typeCell" class="commTypeCell">
+      <div *ngIf="communication.preferred">
+        ***Preferred***
+      </div>
+      <span>
+          <span><fa-icon [icon]="cellIcon"></fa-icon></span> Mobile Number: {{ communication.value }}
+      </span>
+    </div>
+    <div *ngIf="communication.commType === typeEmail" class="commTypeEmail">
+      <div *ngIf="communication.preferred">
+        ***Preferred***
+      </div>
+      <span>
+          <span><fa-icon [icon]="emailIcon"></fa-icon></span> Email Address: {{ communication.value }}
+      </span>
+    </div>
+  </div>
+  <span *ngIf="contact.communications.length < 1">
+    No Contact Information registered.
+  </span>
+  <div *ngIf="contact.communications.length > 0">
+    <button mat-button id="deleteAllComm" (click)="openDialog()">
+      <fa-icon [icon]="delCommIcon"></fa-icon>
+      Delete All Contact Information
+    </button>
+  </div>
+</div>

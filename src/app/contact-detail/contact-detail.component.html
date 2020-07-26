@@ -1,0 +1,18 @@
+<div *ngIf="contact">
+  <h4>
+    {{ contact.identification.lastName | uppercase }},
+    {{ contact.identification.firstName | uppercase }}
+  </h4>
+  <div>
+    <span>Date of Birth: </span>
+    {{ contact.identification.dateOfBirth }}
+  </div>
+  <div *ngIf="!(null == contact.identification.gender) && (contact.identification.gender !== hideGender.toString().charAt(0))">
+    <span>Gender: </span>
+    {{ contact.identification.gender }}
+  </div>
+  <div>
+    <span>Title: </span>
+    {{ contact.identification.title }}
+  </div>
+</div>

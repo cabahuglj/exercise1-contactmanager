@@ -1,0 +1,30 @@
+<div *ngIf="isAddingContact">
+  <h4>Add Contact</h4>
+  <div>
+    <form [formGroup]="profile">
+      <label>
+        First Name:
+        <input type="text" formControlName="firstName" />
+      </label>
+      <label>
+        Last Name:
+        <input type="text" formControlName="lastName" />
+      </label>
+      <div formGroupName="address">
+        <label>
+          Street:
+          <input type="text" formControlName="street" />
+        </label>
+        <label>
+          City:
+          <input type="text" formControlName="city" />
+        </label>
+        <label>
+          Zip Code:
+          <input type="text" formControlName="zipCode" />
+        </label>
+      </div>
+      <button mat-button type="submit" [disabled]="profile.valid">Add Contact</button>
+    </form>
+  </div>
+</div>
